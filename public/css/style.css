@@ -1,0 +1,42 @@
+body {
+    background-color: gainsboro
+}
+
+.container {
+    background-color: white;
+}
+
+.pull-right img-thumbnail {
+    margin-top: -10px;
+    margin-bottom: 10px
+}
+
+.header-row {
+    margin-top: 20px
+}
+
+.banner-img {
+    margin-bottom: 20px
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.product-img {
+    width: 70%;
+}
+.review-area select{
+    width: 80px;
+}
+.review-area{
+    padding: 30px 0;
+}
+.trash-can,
+.adjust-icon{
+    width: 30px;
+    padding-left: 10px;
+}
+.add-item{
+    width: 30px;
+}
