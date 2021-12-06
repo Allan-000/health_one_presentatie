@@ -95,49 +95,29 @@ switch ($params[1]) {
                 $_SESSION['username']=$user->name;
                 $_SESSION['useremail']=$user->email;
                 $_SESSION['role']=$user->role;
-                if($user->role=="admin"){
-                    header("Location: admin");
-
-                }
-                if($user->role=="customer"){
-                    header("Location: customer");
-                }
+                var_dump($_SESSION);
+                header("Location: /".$_SESSION['role']);
             }
         }
         include_once ('../Templates/login.php');
         break;
     case 'admin':
-        include_once ('../Templates/adminhome.php');
-        echo "dit is admin pagina";
-        if(isset($params[2]) && $params[2]=='adminhome'){
-            include_once ('../Templates/adminhome.php');
+        if($_SESSION['role']=='admin'){
+            include_once ('admin.php');
         }
-        if(isset($params[2]) && $params[2]=='beheer'){
-            include_once ('../Templates/beheer.php');
+        else{
+            header("Location: /inloggen");
         }
         break;
     case 'customer':
-        echo "dit is klant pagina";
-
+        if($_SESSION['role']=='customer'){
+            include_once ('customer.php');
+        }
+        else{
+            header("Location: /inloggen");
+        }
         break;
-//    case 'additempage';
-//        $addItemErrorMessege="";
-//        $titleSuffix= ' | apparaat toevoegen';
-//        require_once ('../Modules/AddItem.php');
-//        if(isset($_POST['submit'])){
-//            $deviceName=filter_input(INPUT_POST,'product-name',FILTER_SANITIZE_STRING);
-//            $deviceCategory=filter_input(INPUT_POST,'category');
-//            $devicePicture=filter_input(INPUT_POST,'photo');
-//            $deviceDescription=filter_input(INPUT_POST,'description',FILTER_SANITIZE_STRING);
-//            if(empty($deviceName)||empty($deviceCategory)||empty($devicePicture)||empty($deviceDescription)){
-//                $addItemErrorMessege="Niet alle velden ingevuld";
-//            }
-//            else{
-//                $newDevice=addDevice($deviceName,$devicePicture,$deviceCategory,$deviceDescription);
-//            }
-//        }
-//        include_once ('../Templates/additempage.php');
-//        break;
+
     default:
         $titleSuffix = ' | Home';
         include_once "../Templates/home.php";

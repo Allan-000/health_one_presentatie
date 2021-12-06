@@ -11,12 +11,11 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/admin/adminhome">home</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="/admin/beheer">apparaten beheer</a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" href="">openingstijden aanpassen</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">

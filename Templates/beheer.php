@@ -37,7 +37,7 @@
     </table>
     <hr>
     <h4>Voeg een nieuwe apparaat toe :</h4>
-    <a href='/additempage'><img class='add-item' src='../public/img/plus-square-regular.svg' alt=''></a>
+    <a href='beheer/additempage'><img class='add-item' src='../public/img/plus-square-regular.svg' alt=''></a>
     <br><br>
 </div>
 </body>
