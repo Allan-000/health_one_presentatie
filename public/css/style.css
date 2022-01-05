@@ -40,3 +40,12 @@ body {
 .add-item{
     width: 30px;
 }
+.admin-img,
+.admin-icon{
+    height: 50px;
+    width: 50px;
+    box-shadow: 4px 4px 40px gray;
+}
+.admin-icon{
+    border-radius: 50%;
+}

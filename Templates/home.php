@@ -20,10 +20,7 @@
             <?php
             include_once ('defaults/footer.php');
             if(!empty($_SESSION)){
-                //destroying loged in information after logging out
-//                session_destroy();
-//                session_unset();
-//                var_dump($_SESSION);
+                var_dump($_SESSION);
             }
             ?>
         </div>

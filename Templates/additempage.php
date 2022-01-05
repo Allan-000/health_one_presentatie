@@ -15,7 +15,7 @@
 
     <div class="container border mt-5 rounded-3 shadow-lg w-75">
         <h4 class="text-center p-4"> Een nieuwe apparaat toevogen</h4>
-        <form action="/admin/beheer" method="post">
+        <form action="" method="post">
             <div class="form-outline d-block mx-auto w-75">
                 <input type="text" name="product-name" class="form-control w-75 p-2 d-block mx-auto form-control-md" placeholder="Product Naam:" required/>
                 <br>
@@ -35,7 +35,7 @@
                 </div>
                 <textarea name="description" class="d-block mx-auto w-75 p-2 mb-5" placeholder="Voer hier informatie over de apparaat" required></textarea>
 
-                <input class="btn-success rounded p-2 mb-4 d-block mx-auto text-light" type="submit" name="submit" value="Toevoegen">
+                <input class="btn-success rounded p-2 mb-4 d-block mx-auto text-light" type="submit" name="additem" value="Toevoegen">
             </div>
         </form>
     </div>

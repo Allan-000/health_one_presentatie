@@ -13,31 +13,34 @@
     include_once ('../Templates/defaults/adminpageMenu.php');
     include_once ('../Templates/defaults/pictures.php');
 
-
     ?>
     <h2 class="text-center">beheer apparaten</h2>
     <br>
-    <table class="w-100 ">
-        <tr>
-            <th><h6>Product Naam:</h6></th>
-            <th><h6>Aanpassen</h6></th>
-            <th><h6>Verwijderen</h6></th>
+
+    <table class="table table-striped">
+        <tr class="">
+            <th>Product Naam:</th>
+            <th>Plaatje</th>
+            <th>Category</th>
+            <th>Details Aanpassen</th>
+            <th>Verwijderen</th>
         </tr>
-        <hr>
-    <?php
-    $products=getProductsAdmin();
-    foreach ($products as $product){
-        echo "<tr class='beheer-tr'>";
-        echo "<td class='p-2'>$product->name</td>";
-        echo "<td class='p-2'><a href=''><img class='adjust-icon' src='../public/img/adjusticon.png'></a></td>";
-        echo "<td class='p-2'><a href=''><img class='trash-can' src='../public/img/trash-alt-regular.svg'></a></td>";
-        echo "</tr>";
-    }
-    ?>
+        <?php
+        $products=getProductsAdmin();
+        foreach ($products as $product){
+            echo "<tr>";
+            echo "<td>$product->product_name</td>";
+            echo "<td><img class='card-img img-fluid admin-img' src='/img/categories/crosstrainer/$product->picture'></td>";
+            echo "<td>$product->category</td>";
+            echo "<td><a href='/admin/beheer/adjustitempage/$product->product_id'><img class='card-img img-fluid admin-icon' src='/img/adjusticon.png'></a></td>";
+            echo "<td><a href='/admin/beheer/removeitem/$product->product_id'><img class='card-img img-fluid admin-icon' src='/img/trash-alt-regular.svg'></a></td>";
+            echo "</tr>";
+        }
+        ?>
     </table>
     <hr>
     <h4>Voeg een nieuwe apparaat toe :</h4>
-    <a href='beheer/additempage'><img class='add-item' src='../public/img/plus-square-regular.svg' alt=''></a>
+    <a href='/admin/beheer/additempage'><img class='add-item' src='/img/plus-square-regular.svg' alt=''></a>
     <br><br>
 </div>
 </body>
