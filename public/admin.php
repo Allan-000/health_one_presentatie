@@ -1,6 +1,6 @@
 <?php
 require_once ('../Modules/AddItem.php');
-require_once ('../Modules/RemoveItem.php');
+require_once ('../Modules/Beheer.php');
 global $params;
 
 if(isset($params[1]) && empty($params[2])){
@@ -47,6 +47,24 @@ if(isset($params[3])){
                 header("Location: /admin/beheer");
             }
             include_once ('../Templates/removeitem.php');
+        break;
+        case 'adjustitempage':
+            $toAdjustItemId='';
+            if($params[4]){
+                $toAdjustItemId=$params[4];
+            }
+            $product=getProduct($toAdjustItemId);
+            if(isset($_POST['adjust'])){
+                $newProductName=filter_input(INPUT_POST,'product-name',FILTER_SANITIZE_STRING);
+                $newCategoryId=filter_input(INPUT_POST,'category',FILTER_SANITIZE_NUMBER_INT);
+                $newProductDescription=filter_input(INPUT_POST,'description',FILTER_SANITIZE_STRING);
+                $adjustItem=adjustItem($newProductName,$newCategoryId,$newProductDescription,$toAdjustItemId);
+                header("Location: /admin/beheer");
+            }
+            else if(isset($_POST['cancelAdjust'])){
+                header("Location: /admin/beheer");
+            }
+        include_once ('../Templates/adjustitempage.php');
         break;
     }
 }

@@ -3,7 +3,7 @@
 <head>
     <?php
     include_once ('../Templates/defaults/head.php');
-    require_once ('../Modules/RemoveItem.php');
+    require_once ('../Modules/Beheer.php');
     ?>
 </head>
 <body>
