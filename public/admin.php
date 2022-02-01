@@ -24,10 +24,15 @@ if(isset($params[3])){
             if(isset($_POST['additem'])){
                 $productName=filter_input(INPUT_POST,'product-name',FILTER_SANITIZE_STRING);
                 $categoryId=filter_input(INPUT_POST,'category',FILTER_SANITIZE_NUMBER_INT);
-                $productPic=filter_input(INPUT_POST,'photo');
+                $productPic=$_FILES['photo']['name'];
+                $productTmpName = $_FILES['photo']['tmp_name'];
                 $productDiscription=filter_input(INPUT_POST,'description',FILTER_SANITIZE_STRING);
-                $addedDevice=addDevice($productName,$productPic,$categoryId,$productDiscription);
-                header("Location: /admin/beheer");
+                if(!empty($productName && !empty($categoryId)) && !empty($productPic) && !empty($productPic)){
+                    move_uploaded_file($productTmpName,'img/'.$productPic);
+                    var_dump($productPic);
+                    $addedDevice=addDevice($productName,$productPic,$categoryId,$productDiscription);
+                    header("Location: /admin/beheer");
+                }
             }
             include_once ('../Templates/additempage.php');
         break;

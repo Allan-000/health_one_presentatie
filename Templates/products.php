@@ -28,7 +28,7 @@ foreach ($products as $product) {
     echo "<div class='col-lg-2'>";
     echo "<div class='card'>";
     echo "<a href='/product/$product->id'>";
-    echo "<img class='card-img img-fluid' src='/img/categories/crosstrainer/$product->picture'>";
+    echo "<img class='card-img img-fluid' src='/img/$product->picture'>";
     echo "</a>";
     echo "<h3 class='text-center'><i>$product->name</i></h3>";
     echo "</div>";
