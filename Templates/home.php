@@ -19,9 +19,6 @@
             <hr>
             <?php
             include_once ('defaults/footer.php');
-            if(!empty($_SESSION)){
-                var_dump($_SESSION);
-            }
             ?>
         </div>
     </body>

@@ -15,6 +15,14 @@ if(isset($params[2]) && empty($params[3])){
         case 'beheer':
             include_once ('../Templates/beheer.php');
             break;
+//            openningstijden-aanpassen
+        case'openingstijden-aanpassen':
+            include_once('../Templates/openingstijden-master-page.php');
+            break;
+        case 'openingstijden-detail-page':
+
+            include_once ('../Templates/openingstijden-detail-page.php');
+            break;
     }
 }
 if(isset($params[3])){
@@ -29,7 +37,7 @@ if(isset($params[3])){
                 $productDiscription=filter_input(INPUT_POST,'description',FILTER_SANITIZE_STRING);
                 if(!empty($productName && !empty($categoryId)) && !empty($productPic) && !empty($productPic)){
                     move_uploaded_file($productTmpName,'img/'.$productPic);
-                    var_dump($productPic);
+                    var_dump($_FILES);
                     $addedDevice=addDevice($productName,$productPic,$categoryId,$productDiscription);
                     header("Location: /admin/beheer");
                 }

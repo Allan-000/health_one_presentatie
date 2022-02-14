@@ -30,7 +30,7 @@
         foreach ($products as $product){
             echo "<tr>";
             echo "<td>$product->product_name</td>";
-            echo "<td><img class='card-img img-fluid admin-img' src='/img/categories/crosstrainer/$product->picture'></td>";
+            echo "<td><img class='card-img img-fluid admin-img' src='/img/$product->picture'></td>";
             echo "<td>$product->category</td>";
             echo "<td><a href='/admin/beheer/adjustitempage/$product->product_id'><img class='card-img img-fluid admin-icon' src='/img/adjusticon.png'></a></td>";
             echo "<td><a href='/admin/beheer/removeitem/$product->product_id'><img class='card-img img-fluid admin-icon' src='/img/trash-alt-regular.svg'></a></td>";

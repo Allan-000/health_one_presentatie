@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2021 at 11:10 PM
+-- Generation Time: Feb 14, 2022 at 02:30 PM
 -- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -38,10 +38,36 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id`, `category_name`, `picture`) VALUES
-(1, 'loopband', 'public/img/categories/loopband.jpg'),
+(1, 'loopbanden', 'public/img/categories/loopband.jpg'),
 (2, 'hometrainer', 'public/img/categories/hometrainer.jpg'),
 (3, 'crosstrainer', 'public/img/categories/crosstrainer.jpg'),
 (4, 'roeitrainer', 'public/img/categories/roeitrainer.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `opening_times`
+--
+
+CREATE TABLE `opening_times` (
+  `id` int(11) NOT NULL,
+  `day` varchar(255) NOT NULL,
+  `opening` time NOT NULL,
+  `closing` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `opening_times`
+--
+
+INSERT INTO `opening_times` (`id`, `day`, `opening`, `closing`) VALUES
+(3, 'Maandag', '09:00:00', '21:00:00'),
+(4, 'Disndag', '09:00:00', '21:00:00'),
+(5, 'Woensdag', '09:00:00', '21:00:00'),
+(6, 'Donderdag', '09:00:00', '21:00:00'),
+(7, 'Vrijdag', '09:00:00', '21:00:00'),
+(8, 'Zaterdag', '10:00:00', '16:00:00'),
+(9, 'Zondag', '10:00:00', '16:00:00');
 
 -- --------------------------------------------------------
 
@@ -79,9 +105,11 @@ INSERT INTO `product` (`id`, `name`, `picture`, `category_id`, `description`) VA
 (19, 'VirtuFit Foldable Water Resistance Row 900 Roeitrainer', 'roeitrainer1.jpg', 4, 'Wanneer het te koud is om buiten te roeien zorg je dat binnen roeien hetzelfde gevoel oplevert. De VirtuFit Foldable Water Resistance Row 900 Roeitrainer reageert op je roeislagen alsof je in een roeiboot over het water vaart. Dat ligt aan de waterweerstand van deze roeitrainer. Het rad dat door de watertank draait geeft je dezelfde soort tegenkracht als een roeispaan die door het water beweegt.'),
 (20, 'TUNTURI ROEITRAINER CARDIO FIT R60W', 'roeitrainer2.jpg', 4, 'Een ander voordeel van een water roeitrainer is dat de weerstand over de gehele beweging gelijk is. Dit traint comfortabel en het is goed voor je lichaam.\r\nEr zijn weinig oefeningen waarbij je meer spieren in je lichaam gebruikt dan bij het roeien. De roeioefeningen kunnen nu heel eenvoudig thuis uitgevoerd worden op de Tunturi Cardio Fit R60W Roeier.'),
 (23, 'CAPITAL SPORTS The Skyf', 'roeitrainer3.jpg', 4, 'Training voor het hele lichaam! Met de CAPITAL SPORTS The Skyf roeitrainer wordt je roeitraining naar een hoger niveau gebracht. Dankzij de gepatenteerde SculSimulation zijn beide roeiarmen volledig onafhankelijk van elkaar te bewegen en maken zo hele nieuwe oefeningen.'),
-(24, 'Infiniti R-100 IR Roeitrainer', 'roeitrainer4.jpg', 4, 'Wie het trainen op een roeitrainer in de sportschool gewend is kan zich vaak maar moeilijk tevreden stellen met de vaak mindere kwaliteit van de goedkopere thuistoestellen. De oplossing hiervoor is de Infiniti R-100 IR (InfraRed). Deze lucht/magnetische roeitrainer biedt namelijk absolute topkwaliteit, een ongeëvenaarde roeibeleving en ongekende mogelijkheden tegen een zeer gunstige prijs.'),
+(24, 'Infiniti R-100 IR Roeitrainer xx', 'roeitrainer4.jpg', 4, 'Wie het trainen op een roeitrainer in de sportschool gewend is kan zich vaak maar moeilijk tevreden stellen met de vaak mindere kwaliteit van de goedkopere thuistoestellen. De oplossing hiervoor is de Infiniti R-100 IR (InfraRed). Deze lucht/magnetische roeitrainer biedt namelijk absolute topkwaliteit, een ongeëvenaarde roeibeleving en ongekende mogelijkheden tegen een zeer gunstige prijs.'),
 (25, 'Tunturi Cardio Fit R30', 'roeitrainer5.jpg', 4, 'Op de Tunturi Cardio Fit R30 volg je tijdens het trainen de belangrijkste parameters: snelheid, afstand, calorieën, tijd en slagen per minuut. Ook de 500 m tijd lees je af op de monitor met duidelijke display (80 x 42 mm). Je weet welk effect je work-out heeft: je leert de doeltreffendheid ervan beoordelen en verbeteren.'),
-(26, 'C2-2712 Concept2 RowErg with PM5', 'roeitrainer6.jpg', 4, 'De betrouwbare prestaties van de Model D indoor rower heeft deze roeier tot de best verkochte roeier ter wereld gemaakt. Wedstrijdroeiers beschouwen de Concept2 model D roeier als dé standaard voor indoor trainingen.\r\nDe Model D roeier levert een zorgt voor een effectieve cardiovasculaire training waardoor conditie en ‘toning’ verbeterd zullen worden.');
+(26, 'C2-2712 Concept2 RowErg with PM5', 'roeitrainer6.jpg', 4, 'De betrouwbare prestaties van de Model D indoor rower heeft deze roeier tot de best verkochte roeier ter wereld gemaakt. Wedstrijdroeiers beschouwen de Concept2 model D roeier als dé standaard voor indoor trainingen.\r\nDe Model D roeier levert een zorgt voor een effectieve cardiovasculaire training waardoor conditie en ‘toning’ verbeterd zullen worden.'),
+(59, 'lifeStyle', 'Lifefitnessx9i.jpg', 3, 'De Life Fitness crosstrainer Club Series X9i is een topmodel onder de crosstrainers en bekend van de professionele modellen uit de fitnessclubs.\r\n\r\nDit gebruikte model is in perfecte staat en wordt geleverd met 1 jaar garantie garantie.\r\n\r\nDe Club Series is het resultaat van uitgebreid onderzoek en zorgt voor een opmerkelijk pure, natuurlijke elliptische beweging.'),
+(60, 'WAHOO KICKR SMART POWER TRAINER', 'Wahoo-Kickr_2020_01__00817.1604622841.1280.1280.jpg', 2, 'Looking for something loaded with premium features and second-to-none accuracy that’s ready to ride straight out the box? This is the trainer for you.');
 
 -- --------------------------------------------------------
 
@@ -90,7 +118,7 @@ INSERT INTO `product` (`id`, `name`, `picture`, `category_id`, `description`) VA
 --
 
 CREATE TABLE `review` (
-  `id` int(11) NOT NULL,
+  `review_id` int(11) NOT NULL,
   `reviewer_name` varchar(255) NOT NULL,
   `rating` int(1) NOT NULL,
   `description` text DEFAULT NULL,
@@ -103,12 +131,14 @@ CREATE TABLE `review` (
 -- Dumping data for table `review`
 --
 
-INSERT INTO `review` (`id`, `reviewer_name`, `rating`, `description`, `date`, `product_id`, `user_id`) VALUES
-(14, 'Allan', 5, 'Super', '2021-11-21', 17, NULL),
-(15, 'Allan', 5, 'goed', '2021-11-21', 17, NULL),
-(16, 'Allo Missh', 4, 'hbb', '2021-11-21', 17, NULL),
-(17, 'Allan Hassan', 1, 'eathnban', '2021-11-21', 17, NULL),
-(18, 'Allan', 5, '6', '2021-11-21', 18, NULL);
+INSERT INTO `review` (`review_id`, `reviewer_name`, `rating`, `description`, `date`, `product_id`, `user_id`) VALUES
+(25, 'Allan', 5, 'Goede apparaat', '2021-11-21', 18, NULL),
+(26, 'Allan', 5, 'goed', '2021-11-22', 10, NULL),
+(27, 'Allan', 1, '', '2021-11-22', 10, NULL),
+(28, 'Allan', 4, 'mooi', '2021-11-22', 18, NULL),
+(29, 'Allan', 1, 'slechte apparaat', '2021-11-23', 9, NULL),
+(30, 'Allan', 5, 'goed', '2021-11-28', 17, NULL),
+(31, 'Allan', 1, 'slechte apparaat', '2022-01-18', 17, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,6 +156,14 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `gender`) VALUES
+(1, 'Allan', 'allan@rocmondriaan.nl', 'qwerty', 'admin', 'male'),
+(2, 'piet', 'pietje@pietmail.nl', 'qwerty', 'customer', 'male');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -133,6 +171,12 @@ CREATE TABLE `user` (
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `opening_times`
+--
+ALTER TABLE `opening_times`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -146,7 +190,7 @@ ALTER TABLE `product`
 -- Indexes for table `review`
 --
 ALTER TABLE `review`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`review_id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `user_id` (`user_id`);
 
@@ -167,22 +211,28 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `opening_times`
+--
+ALTER TABLE `opening_times`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

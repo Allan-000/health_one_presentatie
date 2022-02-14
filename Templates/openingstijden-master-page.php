@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <?php
-    include ('../Templates/defaults/head.php');
+    include_once ('../Templates/defaults/head.php');
     require_once ('../Modules/OpeningTimes.php');
     ?>
     <style>
@@ -26,14 +26,23 @@
 <body>
 <div class="container">
     <?php
-    include ('../Templates/defaults/header.php');
-    include ('../Templates/defaults/menu.php');
-    include ('../Templates/defaults/pictures.php');
+    include_once ('defaults/header.php');
+    include_once ('defaults/adminpageMenu.php');
+    include_once ('defaults/pictures.php');
     $times=getTimes();
+    if(isset($_POST['submit'])){
+
+
+
+        $toUpdateTime=adjustItem();
+
+
+
+    }
     ?>
     <div class="container">
-    <h2 class="text-center bg-dark text-light py-2">Openingstijden</h2>
-    <br><br>
+        <h2 class="text-center text-secondary py-2">Openingstijden aanpassen:</h2>
+        <br><br>
         <table>
             <tr>
                 <td> </td>
@@ -43,17 +52,18 @@
             <?php
             foreach ($times as $time){
                 echo"
-                
                 <tr>
                 <td>$time->day</td>
                 <td class='opening'>$time->opening</td>
                 <td class='sluiten'>$time->closing</td>
+                <td>
+                <a class='btn btn-success' href='openingstijden-detail-page/$time->id'>tijden aanpassen</a>
+                </td>
                 </tr>
                 ";
             }
             ?>
         </table>
-
     </div>
     <hr>
     <?php
