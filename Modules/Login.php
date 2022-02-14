@@ -16,3 +16,20 @@ function getUser($email,$password){
     }
 }
 
+function adjustUserData($name,$email,$password,$role,$gender){
+    try{
+        global $pdo;
+        $query=$pdo->prepare('UPDATE user 
+                                                    SET name=:name, email=:email, password=:password , role=:role ,gender=:gender 
+                                                    WHERE email=:email');
+        $query->bindParam('name',$name);
+        $query->bindParam('email',$email);
+        $query->bindParam('password',$password);
+        $query->bindParam('role',$role);
+        $query->bindParam('gender',$gender);
+        $query->execute();
+    }
+    catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}

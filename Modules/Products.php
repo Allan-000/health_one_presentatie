@@ -1,5 +1,4 @@
 <?php
-// TODO Zorg dat de methodes goed ingevuld worden met de juiste queries.
 include ('../Modules/Database.php');
 global $products;
 function getProducts(int $categoryId)

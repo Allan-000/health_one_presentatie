@@ -29,7 +29,7 @@ global $category;
 
     echo "<card class='d-flex flex-column align-items-center'>";
     echo "<h3 class='card-title text-center'>$product->name</h3>";
-    echo"<img class='mx-auto d-block w-25' src='/img/categories/crosstrainer/$product->picture'>";
+    echo"<img class='mx-auto d-block w-25' src='/img/$product->picture'>";
     echo "<h4 class='text-center mx-5 mt-5'>over dit aparaat:</h4>";
     echo "<p class='text-center rounded m-3 p-3 mx-5 lh-lg bg-secondary text-light'>$product->description</p>";
     echo "<a href='/review/$product->id' class='btn btn-success rounded'>Review achterlaten</a>";

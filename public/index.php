@@ -95,6 +95,8 @@ switch ($params[1]) {
                 $_SESSION['username']=$user->name;
                 $_SESSION['useremail']=$user->email;
                 $_SESSION['role']=$user->role;
+                $_SESSION['password']=$user->password;
+                $_SESSION['gender']=$user->gender;
                 var_dump($_SESSION);
                 header("Location: /".$_SESSION['role']);
             }
