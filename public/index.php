@@ -3,7 +3,7 @@ require '../Modules/Categories.php';
 require '../Modules/Products.php';
 require '../Modules/Database.php';
 require '../Modules/Review.php';
-require '../Modules/Login.php';
+require '../Modules/User.php';
 session_start();
 global $dsn;
 $request = $_SERVER['REQUEST_URI'];
@@ -46,16 +46,16 @@ switch ($params[1]) {
         }
         break;
     case 'review';
-        include_once ('../Templates/review.php');
+
         if(isset($_POST['submit'])){
             $reviewerName=$_POST['name'];
             $givenRating=$_POST['rating'];
             $givenDescription=$_POST['description'];
             $reviewedProductId=$_POST['productId'];
             $review=saveReviews($reviewerName,$givenRating,$givenDescription,$reviewedProductId);
-            header("Location: /product/$reviewedProductId",true);
-            $_POST=[];
+            header("Location: /product/$reviewedProductId");
         }
+        include_once ('../Templates/review.php');
         break;
     case 'registreren':
         $titleSuffix = ' | Registreren';
@@ -70,7 +70,7 @@ switch ($params[1]) {
         include ('../Templates/openingstijden.php');
         break;
     case 'inloggen';
-    require_once ('../Modules/Login.php');
+    require_once('../Modules/User.php');
         $loginMssg="";
         $user="";
         $titleSuffix=' | inloggen';
@@ -97,6 +97,7 @@ switch ($params[1]) {
                 $_SESSION['role']=$user->role;
                 $_SESSION['password']=$user->password;
                 $_SESSION['gender']=$user->gender;
+                $_SESSION['userId']=$user->id;
                 var_dump($_SESSION);
                 header("Location: /".$_SESSION['role']);
             }

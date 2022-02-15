@@ -1,5 +1,5 @@
 <?php
-// TODO Zorg dat de methodes goed ingevuld worden met de juiste queries.
+
 include_once ("../Modules/Database.php");
 function getCategories() {
     global $pdo;

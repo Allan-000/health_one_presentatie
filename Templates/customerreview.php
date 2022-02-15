@@ -2,24 +2,23 @@
 <html lang="en">
 <head>
     <?php
-    include_once ('../Templates/defaults/head.php');
+    include_once '../Templates/defaults/head.php';
     require_once ('../Modules/Products.php');
+    global $product;
     ?>
 </head>
 <body>
 <div class="container">
     <?php
-    include_once ('../Templates/defaults/header.php');
-    include_once ('../Templates/defaults/menu.php');
-    include_once ('../Templates/defaults/pictures.php');
-    require_once ('../Modules/Products.php');
-    $product=getProduct($_GET['id']);
+    include_once '../Templates/defaults/header.php';
+    include_once '../Templates/defaults/customerpageMenu.php';
+    include_once '../Templates/defaults/pictures.php';
     ?>
     <div class="container border mt-5 rounded-3 shadow-lg w-75">
         <h4 class="text-center p-4"> Voeg een review toe:</h4>
         <form method="post">
             <div class="form-outline d-block mx-auto w-75">
-                <input type="text" name="name" class="form-control form-control-md" placeholder="Naam:" required/>
+                <p class="text-center m-auto w-25 border border-2 border-secondary rounded-3 text-black"><b><?php echo $_SESSION['username'] ?></b></p>
                 <div class="row review-area">
                     <label for="" class="col-lg-6 col-sm-12 text-center"> Geef rating op de aparaat:</label>
                     <select class="d-block mx-auto mt-2 col-lg-6 col-sm-12" name="rating" required>
@@ -38,10 +37,10 @@
         </form>
     </div>
     <hr>
+
 <?php
-include_once ('../Templates/defaults/footer.php');
+include_once '../Templates/defaults/footer.php';
 ?>
 </div>
 </body>
 </html>
-

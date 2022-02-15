@@ -1,5 +1,4 @@
 <!doctype html>
-
 <head>
     <?php
     global $products;

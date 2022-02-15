@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/customer/customerProfile">
+        <a class="navbar-brand" href="/customer/customerhome">
             Sportcenter
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,16 +13,14 @@
                     <a class="nav-link active" href="/customer/customerProfile">Mijn profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/categories">sportapparaat</a>
+                    <a class="nav-link" href="/customer/categories">sportapparaat</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/customer/contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link"  href="/registreren">registreren</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/contact">contact</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/openingstijden">Openingstijden</a>
+                    <a class="nav-link" href="/customer/openingstijden">Openingstijden</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
