@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2022 at 02:30 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Feb 18, 2022 at 03:37 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -114,6 +114,21 @@ INSERT INTO `product` (`id`, `name`, `picture`, `category_id`, `description`) VA
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `requests`
+--
+
+CREATE TABLE `requests` (
+  `id` int(11) NOT NULL,
+  `user_name` varchar(255) NOT NULL,
+  `email_adres` varchar(255) NOT NULL,
+  `request` text NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `date` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `review`
 --
 
@@ -124,7 +139,7 @@ CREATE TABLE `review` (
   `description` text DEFAULT NULL,
   `date` date NOT NULL DEFAULT current_timestamp(),
   `product_id` int(11) NOT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -132,13 +147,9 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `reviewer_name`, `rating`, `description`, `date`, `product_id`, `user_id`) VALUES
-(25, 'Allan', 5, 'Goede apparaat', '2021-11-21', 18, NULL),
-(26, 'Allan', 5, 'goed', '2021-11-22', 10, NULL),
-(27, 'Allan', 1, '', '2021-11-22', 10, NULL),
-(28, 'Allan', 4, 'mooi', '2021-11-22', 18, NULL),
-(29, 'Allan', 1, 'slechte apparaat', '2021-11-23', 9, NULL),
-(30, 'Allan', 5, 'goed', '2021-11-28', 17, NULL),
-(31, 'Allan', 1, 'slechte apparaat', '2022-01-18', 17, NULL);
+(36, 'piet', 5, 'Perfecte apparaat', '2022-02-18', 26, 2),
+(37, 'Mark', 5, 'Perfecte apparaat', '2022-02-18', 10, 3),
+(38, 'Jan', 5, 'Goede apparaat,ik heb hem vooreen tijdje gebruikt en hij werkt goed', '2022-02-18', 60, 2);
 
 -- --------------------------------------------------------
 
@@ -151,17 +162,18 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` enum('customer','admin') NOT NULL,
-  `gender` enum('male','female','other') NOT NULL
+  `gender` enum('male','female','other') NOT NULL,
+  `role` enum('customer','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `role`, `gender`) VALUES
-(1, 'Allan', 'allan@rocmondriaan.nl', 'qwerty', 'admin', 'male'),
-(2, 'piet', 'pietje@pietmail.nl', 'qwerty', 'customer', 'male');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `gender`, `role`) VALUES
+(1, 'Allan', 'allan@rocmondriaan.nl', 'qwerty', 'male', 'admin'),
+(2, 'Jan', 'Jan@janmail.nl', 'qwerty', 'male', 'customer'),
+(3, 'Mark', 'mark@mark.nl', 'Mark', 'male', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -185,6 +197,13 @@ ALTER TABLE `opening_times`
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `category_id` (`category_id`);
+
+--
+-- Indexes for table `requests`
+--
+ALTER TABLE `requests`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `review`
@@ -220,19 +239,25 @@ ALTER TABLE `opening_times`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `requests`
+--
+ALTER TABLE `requests`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -243,6 +268,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`);
+
+--
+-- Constraints for table `requests`
+--
+ALTER TABLE `requests`
+  ADD CONSTRAINT `requests_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
 
 --
 -- Constraints for table `review`
