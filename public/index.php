@@ -52,13 +52,35 @@ switch ($params[1]) {
             $givenRating=$_POST['rating'];
             $givenDescription=$_POST['description'];
             $reviewedProductId=$_POST['productId'];
-            $review=saveReviews($reviewerName,$givenRating,$givenDescription,$reviewedProductId);
+            $review=uplaodReview($reviewerName,$givenRating,$givenDescription,$reviewedProductId);
             header("Location: /product/$reviewedProductId");
         }
         include_once ('../Templates/review.php');
         break;
     case 'registreren':
         $titleSuffix = ' | Registreren';
+        if(isset($_POST['submit'])){
+            $mssg='';
+            $toRegisterName=filter_input(INPUT_POST,'name',FILTER_SANITIZE_STRING);
+            $toRegisterEmail=filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
+            $toRegisterPassword=filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
+            $toRegisterGender=filter_input(INPUT_POST,'gender');
+            //the following lines of code check if the registerd user does realy exist
+            $excitingUser=doesUserExist($toRegisterEmail);
+            if($excitingUser != true){
+                if(!empty($toRegisterName) && !empty($toRegisterEmail) && !empty($toRegisterPassword) && !empty($toRegisterGender)){
+                    $toRegisterUser=addUser($toRegisterName,$toRegisterEmail,$toRegisterPassword,$toRegisterGender,'customer');
+                    $mssg="<h5 class='alert alert-success text-center'>U bent succesvol geregistreed in de systeem, U kunt nu <a href='/inloggen'>inloggen</a></h5>";
+                }
+                else{
+                    $mssg="<h5 class='alert alert-danger text-center'>Niet alle velden zijn ingevuld ... !</h5>";
+
+                }
+            }
+            else {
+                $mssg="<h5 class='alert alert-warning text-center'>De ingevoerde email bestaat in onze systeem, <a href='/inloggen'>U kunt daarmee inloggen</a></h5>";
+            }
+        }
         include('../Templates/register.php');
         break;
     case 'contact':

@@ -19,6 +19,7 @@ try {
     include_once ('../Classes/Product.php');
     include_once ('../Classes/User.php');
     include_once ('../Classes/Review.php');
+    include_once ('../Classes/Request.php');
 } catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int)$e->getCode());
 }

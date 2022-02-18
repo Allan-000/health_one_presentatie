@@ -1,13 +1,14 @@
 <?php
 
-function saveReviews($name,$rating,$description,$product_id) {
+function uplaodReview($name, $rating, $description, $product_id,$userId) {
     try {
         global $pdo;
-        $query= $pdo->prepare('INSERT INTO review (reviewer_name, rating, description, product_id) VALUES (:reviewername , :rating, :description ,:product_id )' );
+        $query= $pdo->prepare('INSERT INTO review (reviewer_name, rating, description, product_id ,user_id) VALUES (:reviewername , :rating, :description ,:product_id,:user_id )' );
         $query->bindParam("reviewername",$name);
         $query->bindParam("rating",$rating);
         $query->bindParam("description",$description);
         $query->bindParam("product_id",$product_id);
+        $query->bindParam('user_id',$userId);
         $query->execute();
     }
     catch (PDOException $e){

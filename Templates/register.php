@@ -19,10 +19,16 @@
         <div class="container py-5 h-100">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-12 col-lg-9 col-xl-7">
+                    <?php
+                    global $mssg;
+                    if($mssg!=''){
+                        echo $mssg;
+                    }
+                    ?>
                     <div class="card shadow-lg card-registration" style="border-radius: 15px;">
                         <h3 class="pt-5 text-center">Registreren</h3>
                         <div class="card-body p-4 p-md-5">
-                            <form action="register.php" method="get">
+                            <form method="post">
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
@@ -46,7 +52,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <select class="w-100 h-50" name="gender" required>
-                                            <option value="man">Man</option>
+                                            <option value="male">Man</option>
                                             <option value="female">Vrouw</option>
                                             <option value="other">Anders</option>
                                         </select>
@@ -58,6 +64,7 @@
                                     <input class="btn btn-primary btn-lg d-block mx-auto" name="submit" type="submit" value="Registreren" />
                                 </div>
                             </form>
+                                <p class="text-center py-4">Heb je al een account ? <a href="/inloggen">log in</a></p>
                         </div>
                     </div>
                 </div>

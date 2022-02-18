@@ -16,6 +16,22 @@ function getUser($email,$password){
     }
 }
 
+function doesUserExist($email){
+    try{
+        global $pdo;
+        $query=$pdo->prepare('SELECT * FROM user WHERE email=:email');
+        $query->bindParam('email',$email);
+        $query->setFetchMode(PDO::FETCH_CLASS,'User');
+        $query->execute();
+        $existingUser=$query->fetch();
+
+        return $existingUser;
+    }
+    catch (PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
 function adjustUserData($name,$email,$password,$role,$gender,$userId){
     try{
         global $pdo;
@@ -31,6 +47,22 @@ function adjustUserData($name,$email,$password,$role,$gender,$userId){
         $query->execute();
     }
     catch(PDOException $e){
+        echo $e->getMessage();
+    }
+}
+
+function addUser($name,$email,$password,$gender,$role){
+    try{
+        global $pdo;
+        $query=$pdo->prepare('INSERT INTO user (name, email, password,gender,role) VALUES (:name,:email,:password,:gender,:role)');
+        $query->bindParam('name',$name);
+        $query->bindParam('email',$email);
+        $query->bindParam('password',$password);
+        $query->bindParam('gender',$gender);
+        $query->bindParam('role',$role);
+        $query->execute();
+    }
+    catch (PDOException $e){
         echo $e->getMessage();
     }
 }

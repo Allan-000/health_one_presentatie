@@ -2,11 +2,13 @@ RewriteEngine on
 #RewriteRule ^categories/([0-9]+)/?$ /public/index.php?category_id=$1    [NC,L]    # Handle category requests
 #RewriteRule ^categories/([0-9]+)/product/([0-9]+)?$ /public/index.php?category_id=$1&product_id=$2    [NC,L]    # Handle product requests
 
+#De eerste gedeelte van de rewriterule is de gewenste url vervolgt met een getal of karakter, en de tweede gedeelte is te vervangen url
 RewriteRule ^category/([0-9]+)/?$ /public/index.php?id=$1     [NC,L]
 RewriteRule ^product/([0-9]+)/?$ /public/index.php?id=$1     [NC,L]
 RewriteRule ^review/([0-9]+)/?$ /public/index.php?id=$1     [NC,L]
-RewriteRule ^admin/delete/([0-9]+)/?$ /public/admin.php?id=$1    [NC,L]
-RewriteRule ^admin/beheer/removeitem([0-9]+)/?$ /public/admin.php?id=$1    [NC,L]
+RewriteRule ^admin/beheer/adjustitempage/([0-9]+)/?$ /Templates/adjustitempage.php?id=$1    [NC,L]
+RewriteRule ^admin/beheer/removeitem/([0-9]+)/?$ /Templates/removeitem.php?id=$1    [NC,L]
+RewriteRule ^admin/requests/deleteRequest/([0-9]+)/?$ /Templates/deleteRequest.php?id=$1    [NC,L]
 
 
 # Rewrite all the default paths to public e.g. /css/style.css -> /public/css/style.css

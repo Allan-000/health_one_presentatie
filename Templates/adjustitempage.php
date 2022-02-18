@@ -33,7 +33,7 @@
                         </select>
                     </div>
                     <br>
-                    <img class="card-img product-img m-auto" src="/img/categories/crosstrainer/<?=$product->picture ?>">
+                    <img class="card-img product-img m-auto" src="/img/<?=$product->picture ?>">
 
                     <textarea name="description" class="d-block mx-auto w-75 p-2 mb-5" required><?=$product->description ?></textarea>
                     <div class="d-flex justify-content-center pb-3">

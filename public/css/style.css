@@ -49,3 +49,8 @@ body {
 .admin-icon{
     border-radius: 50%;
 }
+
+textarea{
+    resize: none;
+    height: 6rem;
+}
