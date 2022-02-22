@@ -15,25 +15,24 @@ include ('../Templates/defaults/pictures.php');
 ?>
 <div class="container">
     <div class="d-flex justify-content-center">
-        <h5 class="alert alert-danger">Je moet ingelogd zijn om contact op te kunnen nemen</h5>
+        <h5 class="alert alert-warning">Je moet ingelogd zijn om contact op te kunnen nemen</h5>
     </div>
 </div>
 <form action="/contact/" class="container">
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Naam:</label>
-        <input type="text" class="form-control" id="Name"">
+        <input type="text" class="form-control" disabled>
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        <input type="email" class="form-control" disabled>
         <div id="emailHelp" class="form-text">We delen uw contact gegevens nooit met anderen.</div>
     </div>
     <div class="mb-3">
         <label for="exampleInputPassword1" class="form-label">Uw vraag:</label>
-        <textarea class="form-control" id="textareaInput"></textarea>
+        <textarea class="form-control" id="textareaInput" disabled></textarea>
     </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary disabled" disabled>Submit</button>
 </form>
 <hr>
 <?php

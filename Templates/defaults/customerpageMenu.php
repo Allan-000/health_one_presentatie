@@ -9,9 +9,7 @@
 
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/customer/customerProfile">Mijn profile</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/customer/categories">sportapparaat</a>
                 </li>
@@ -20,10 +18,13 @@
                     <a class="nav-link" href="/customer/contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/customer/openingstijden">Openingstijden</a>
+                    <a class="nav-link" href="/customer/openingstijden">Openingstijden en adres</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="/customer/customerProfile">Mijn profile</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/home">uitloggen</a>
                 </li>

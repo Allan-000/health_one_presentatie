@@ -31,18 +31,17 @@
     include_once ('defaults/pictures.php');
     $times=getTimes();
     if(isset($_POST['submit'])){
-
-
-
         $toUpdateTime=adjustItem();
-
-
-
     }
     ?>
     <div class="container">
         <h2 class="text-center text-secondary py-2">Openingstijden aanpassen:</h2>
-        <br><br>
+        <br>
+        <?php
+        if (!empty($_SESSION['dayMssg'])) {
+            echo $_SESSION['dayMssg'];
+        }
+        ?><br>
         <table>
             <tr>
                 <td> </td>

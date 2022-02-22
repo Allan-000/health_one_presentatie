@@ -30,13 +30,13 @@ function getSingleOpningTime($id){
     }
 }
 
-function adjustTimes($opening,$closing,$day){
+function adjustTime($opening,$closing,$id){
     try{
         global $pdo;
-        $query=$pdo->prepare('UPDATE opening_times SET opening=:opening , closing=:closing WHERE day=:day');
+        $query=$pdo->prepare('UPDATE opening_times SET opening=:opening , closing=:closing WHERE id=:id');
         $query->bindParam('opening',$opening);
         $query->bindParam('closing',$closing);
-        $query->bindParam('day',$day);
+        $query->bindParam('id',$id);
         $query->execute();
     }
     catch (PDOException $e){

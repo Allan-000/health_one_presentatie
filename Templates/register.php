@@ -28,7 +28,7 @@
                     <div class="card shadow-lg card-registration" style="border-radius: 15px;">
                         <h3 class="pt-5 text-center">Registreren</h3>
                         <div class="card-body p-4 p-md-5">
-                            <form method="post">
+                            <form method="post" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
@@ -58,6 +58,10 @@
                                         </select>
                                         <label class="form-label">Geslacht </label>
                                     </div>
+                                </div>
+                                <div class="col-md-12 mb-4 d-flex justify-content-center flex-column">
+                                    <label class="text-center">Selecteer uw foto :</label><br>
+                                    <input type="file" name="picture" class="d-flex m-auto">
                                 </div>
 
                                 <div>

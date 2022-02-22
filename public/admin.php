@@ -1,10 +1,9 @@
 <?php
 require_once ('../Modules/AddItem.php');
 require_once ('../Modules/Beheer.php');
+require_once ('../Modules/OpeningTimes.php');
 require_once ('../Modules/Request.php');
 global $params;
-
-
 if(isset($params[1]) && empty($params[2])){
     include_once '../Templates/adminhome.php';
 }
@@ -30,10 +29,8 @@ elseif (isset($params[1]) && !empty($params[2])){
             }
             include_once ('../Templates/additempage.php');
             }
-
             elseif (!empty($params[3]) && $params[3]=='adjustitempage'){
                     $toAdjustItemId=$_GET['id'];
-
                     $product=getProduct($toAdjustItemId);
                     if(isset($_POST['adjust'])){
                         $newProductName=filter_input(INPUT_POST,'product-name',FILTER_SANITIZE_STRING);
@@ -62,13 +59,26 @@ elseif (isset($params[1]) && !empty($params[2])){
                 include_once ('../Templates/removeitem.php');
             }
             break;
-
-
         case 'openingstijden-aanpassen':
             include_once '../Templates/openingstijden-master-page.php';
+            if(isset($_SESSION['dayMssg']))
+                unset($_SESSION['dayMssg']);
             break;
-
-
+        case 'openingstijden-detail-page':
+            if (isset($_POST['submit'])){
+                $dayMssg='';
+                $dayId=$_GET['id'];
+                $openingTime=filter_input(INPUT_POST,'opening');
+                $closingTime=filter_input(INPUT_POST,'closing');
+                $updatedDay=adjustTime($openingTime,$closingTime,$dayId);
+                $_SESSION['dayMssg']  = "<h4 class='text-center alert alert-success m-auto w-50'>De tijden zijn succesvol aangepast</h4>";
+                header("Location:/admin/openingstijden-aanpassen");
+            }
+            else if(isset($_POST['cancel'])){
+                header("Location:/admin/openingstijden-aanpassen");
+            }
+            include_once ('../Templates/openingstijden-detail-page.php');
+            break;
         case 'requests':
             if($params[2]=='requests' && empty($params[3])){
                 include_once '../Templates/requests.php';

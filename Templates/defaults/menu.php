@@ -23,7 +23,7 @@
                     <a class="nav-link" href="/contact">contact</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/openingstijden">Openingstijden</a>
+                    <a class="nav-link" href="/openingstijden">Openingstijden en adres</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">

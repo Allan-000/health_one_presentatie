@@ -51,14 +51,15 @@ function adjustUserData($name,$email,$password,$role,$gender,$userId){
     }
 }
 
-function addUser($name,$email,$password,$gender,$role){
+function addUser($name,$email,$password,$gender,$picture,$role){
     try{
         global $pdo;
-        $query=$pdo->prepare('INSERT INTO user (name, email, password,gender,role) VALUES (:name,:email,:password,:gender,:role)');
+        $query=$pdo->prepare('INSERT INTO user (name, email, password,gender,picture,role) VALUES (:name,:email,:password,:gender,:picture,:role)');
         $query->bindParam('name',$name);
         $query->bindParam('email',$email);
         $query->bindParam('password',$password);
         $query->bindParam('gender',$gender);
+        $query->bindParam('picture',$picture);
         $query->bindParam('role',$role);
         $query->execute();
     }

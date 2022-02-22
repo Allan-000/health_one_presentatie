@@ -65,16 +65,18 @@ switch ($params[1]) {
             $toRegisterEmail=filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
             $toRegisterPassword=filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
             $toRegisterGender=filter_input(INPUT_POST,'gender');
+            $toRegisterPictureName=$_FILES['picture']['name'];
+            $toRegisterPictureTempName=$_FILES['picture']['tmp_name'];
             //the following lines of code check if the registerd user does realy exist
             $excitingUser=doesUserExist($toRegisterEmail);
             if($excitingUser != true){
-                if(!empty($toRegisterName) && !empty($toRegisterEmail) && !empty($toRegisterPassword) && !empty($toRegisterGender)){
-                    $toRegisterUser=addUser($toRegisterName,$toRegisterEmail,$toRegisterPassword,$toRegisterGender,'customer');
+                if(!empty($toRegisterName) && !empty($toRegisterEmail) && !empty($toRegisterPassword) && !empty($toRegisterGender) && !empty($toRegisterPictureName)){
+                    $toRegisterUser=addUser($toRegisterName,$toRegisterEmail,$toRegisterPassword,$toRegisterGender,$toRegisterPictureName,'customer');
+                    move_uploaded_file($toRegisterPictureTempName,'img/'.$toRegisterPictureName);
                     $mssg="<h5 class='alert alert-success text-center'>U bent succesvol geregistreed in de systeem, U kunt nu <a href='/inloggen'>inloggen</a></h5>";
                 }
                 else{
                     $mssg="<h5 class='alert alert-danger text-center'>Niet alle velden zijn ingevuld ... !</h5>";
-
                 }
             }
             else {

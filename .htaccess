@@ -9,6 +9,7 @@ RewriteRule ^review/([0-9]+)/?$ /public/index.php?id=$1     [NC,L]
 RewriteRule ^admin/beheer/adjustitempage/([0-9]+)/?$ /Templates/adjustitempage.php?id=$1    [NC,L]
 RewriteRule ^admin/beheer/removeitem/([0-9]+)/?$ /Templates/removeitem.php?id=$1    [NC,L]
 RewriteRule ^admin/requests/deleteRequest/([0-9]+)/?$ /Templates/deleteRequest.php?id=$1    [NC,L]
+RewriteRule ^admin/openingstijden-detail-page/([0-9]+)/?$ /public/admin/openingstijden-detail-page?id=$1    [NC,L]
 
 
 # Rewrite all the default paths to public e.g. /css/style.css -> /public/css/style.css
