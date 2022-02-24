@@ -20,7 +20,7 @@ require_once '../Modules/Request.php';
                 </div>";
     ?>
     <form class="d-flex justify-content-center" method="post">
-        <input class="btn btn-success mx-2" type="submit" name="apply" value="verwerken">
+        <input class="btn btn-success mx-2" type="submit" name="apply" value="verwerken en verwijderen">
         <input class="btn btn-primary mx-2" type="submit" name="cancel" value="annuleren">
     </form>
     <hr>

@@ -2,10 +2,6 @@
 require_once '../Modules/Database.php';
 require_once '../Modules/Request.php';
 
-$cookieName='mssg';
-$cookieValue="<h5 class='alert alert-success text-center'>Bedankt, We gaan je feedback/aanvraag z.s.m behandelen</h5>";
-setcookie($cookieName,$cookieValue,time() + 3600, "/");
-
 $request=$_SERVER['REQUEST_URI'];
 $params=explode('/',$request);
 
@@ -19,6 +15,9 @@ switch ($params[1]){
         }
         else if($params[1]=='customer' && $params[2]=='customerhome'){
             include_once '../Templates/customerhome.php';
+            if(isset($_SESSION['contactMssg'])){
+                unset($_SESSION['contactMssg']);
+            }
         }
         else if($params[1]=='customer' && !empty($params[2]) && $params[2]=='customerProfile'){
             $mssg='';
@@ -26,18 +25,23 @@ switch ($params[1]){
                 $newUserName=filter_input(INPUT_POST,'name',FILTER_SANITIZE_STRING);
                 $newUserEmail=filter_input(INPUT_POST,'email',FILTER_SANITIZE_STRING);
                 $newPassword=filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
+                $newPhoto=$_FILES['picture']['name'];
+                $newPhotoTempName=$_FILES['picture']['tmp_name'];
                 $role=$_SESSION['role'];
                 $userId=$_SESSION['userId'];
                 $gender=filter_input(INPUT_POST,'gender',FILTER_SANITIZE_STRING);
                 if(!empty($newUserName) && !empty($newUserEmail) && !empty($newPassword) && !empty($gender)){
-                    $toApplyChanges=adjustUserData($newUserName,$newUserEmail,$newPassword,$role,$gender,$userId);
+                    if(empty($newPhoto)){
+                        $newPhoto=$_SESSION['picture'];
+                    }
+                    $toApplyChanges=adjustUserData($newUserName,$newUserEmail,$newPassword,$role,$gender,$newPhoto,$userId);
+                    move_uploaded_file($newPhotoTempName,'img/'.$newPhoto);
                     $mssg="<alert class='alert alert-success'>Je gegevens successvol gewijzigd</alert>";
                 }
                 else{
                     $mssg="<alert class='alert alert-warning'>Er ontbreken sommige velden, Vul ze In AUB</alert>";
                 }
             }
-
             include_once '../Templates/customerProfile.php';
         }
         else if($params[1]=='customer' && !empty($params[2]) && $params[2]=='categories'){
@@ -84,11 +88,11 @@ switch ($params[1]){
                 $userRequest=filter_input(INPUT_POST,'request',FILTER_SANITIZE_STRING);
                 if(!empty($userRequest)){
                     $toUploadReq=uploadRequest($username,$userEmailAdress,$userRequest,$userId);
-
+                    $_SESSION['contactMssg']="<h5 class='alert alert-success text-center'>Bedankt voor uw feedback. onze mederwerkers gaan uw feeback z.s.m behandelen.</h5>";
                     header("Location: /customer/customerhome");
                 }
                 else{
-                    $errMssg="<h5 class='alert alert-danger text-center'>Je hebt geen aanvraag ingevuld...!</h5>";
+                    $errMssg="<h5 class='alert alert-danger text-center'>Je hebt geen vraag/opmerking ingevuld...!</h5>";
                 }
             }
             include_once '../Templates/customerContact.php';

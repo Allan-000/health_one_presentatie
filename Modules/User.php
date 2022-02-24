@@ -32,17 +32,18 @@ function doesUserExist($email){
     }
 }
 
-function adjustUserData($name,$email,$password,$role,$gender,$userId){
+function adjustUserData($name,$email,$password,$role,$gender,$picture,$userId){
     try{
         global $pdo;
         $query=$pdo->prepare('UPDATE user 
-                                    SET name=:name, email=:email, password=:password , role=:role ,gender=:gender 
+                                    SET name=:name, email=:email, password=:password , role=:role ,gender=:gender ,picture=:picture
                                     WHERE id=:id');
         $query->bindParam('name',$name);
         $query->bindParam('email',$email);
         $query->bindParam('password',$password);
         $query->bindParam('role',$role);
         $query->bindParam('gender',$gender);
+        $query->bindParam('picture',$picture);
         $query->bindParam('id',$userId);
         $query->execute();
     }

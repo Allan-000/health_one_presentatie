@@ -45,18 +45,6 @@ switch ($params[1]) {
             include_once ('../Templates/home.php');
         }
         break;
-    case 'review';
-
-        if(isset($_POST['submit'])){
-            $reviewerName=$_POST['name'];
-            $givenRating=$_POST['rating'];
-            $givenDescription=$_POST['description'];
-            $reviewedProductId=$_POST['productId'];
-            $review=uplaodReview($reviewerName,$givenRating,$givenDescription,$reviewedProductId);
-            header("Location: /product/$reviewedProductId");
-        }
-        include_once ('../Templates/review.php');
-        break;
     case 'registreren':
         $titleSuffix = ' | Registreren';
         if(isset($_POST['submit'])){
@@ -122,7 +110,7 @@ switch ($params[1]) {
                 $_SESSION['password']=$user->password;
                 $_SESSION['gender']=$user->gender;
                 $_SESSION['userId']=$user->id;
-                var_dump($_SESSION);
+                $_SESSION['picture']=$user->picture;
                 header("Location: /".$_SESSION['role']);
             }
         }

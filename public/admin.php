@@ -95,5 +95,32 @@ elseif (isset($params[1]) && !empty($params[2])){
                 include_once '../Templates/deleteRequest.php';
             }
             break;
+        case 'adminProfile':
+            if(isset($_POST['submit'])){
+                $mssg='';
+                $newUserName=filter_input(INPUT_POST,'name',FILTER_SANITIZE_STRING);
+                $newUserEmail=filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);
+                $newUserPassword=filter_input(INPUT_POST,'password',FILTER_SANITIZE_STRING);
+                $newUserGender=filter_input(INPUT_POST,'gender');
+                $userId=$_SESSION['userId'];
+                $newUserPhoto=$_FILES['picture']['name'];
+                $newUserPhotoTempName=$_FILES['picture']['tmp_name'];
+                if(!empty($newUserName) && !empty($newUserEmail) && !empty($newUserPassword) && !empty($newUserGender)){
+                    if(empty($newUserPhoto)){
+                        $newUserPhoto=$_SESSION['picture'];
+                    }
+                    $toAdjustUser=adjustUserData($newUserName,$newUserEmail,$newUserPassword,$_SESSION['role'],$newUserGender,$newUserPhoto,$userId);
+                    move_uploaded_file($newUserPhotoTempName,'img/'.$newUserPhoto);
+                    $mssg="<alert class='alert alert-success'>Je gegevens successvol gewijzigd</alert>";
+                }
+                else{
+                    $mssg="<alert class='alert alert-warning'>Er ontbreken sommige velden, Vul ze In AUB</alert>";
+                }
+            }
+            else if(isset($_POST['cancel'])){
+                header("Location: /admin/adminProfile");
+            }
+            include_once '../Templates/adminProfile.php';
+            break;
     }
 }

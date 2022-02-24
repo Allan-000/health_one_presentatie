@@ -22,11 +22,14 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link active" href="/customer/customerProfile">Mijn profile</a>
+                <li class="nav-item d-flex">
+                    <a class="nav-link d-flex" href="/customer/customerProfile">
+                    <img class="profile-img" src="/img/<?php echo $_SESSION['picture'] ?>" alt="user Pictrue">
+                    <p class="text-center p-1">Mijn profile</p>
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/home">uitloggen</a>
+                    <a class="nav-link" href="/home"><p class="p-1">uitloggen</p></a>
                 </li>
             </ul>
         </div>

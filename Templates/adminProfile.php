@@ -9,7 +9,7 @@
 <div class="container">
     <?php
     include_once '../Templates/defaults/header.php';
-    include_once '../Templates/defaults/customerpageMenu.php';
+    include_once '../Templates/defaults/adminpageMenu.php';
     include_once '../Templates/defaults/pictures.php';
     ?>
     <h2 class="text-center my-4"><?php echo $_SESSION['username']; ?>'s profiel </h2>
