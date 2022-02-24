@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2022 at 03:37 PM
+-- Generation Time: Feb 24, 2022 at 06:32 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -61,7 +61,7 @@ CREATE TABLE `opening_times` (
 --
 
 INSERT INTO `opening_times` (`id`, `day`, `opening`, `closing`) VALUES
-(3, 'Maandag', '09:00:00', '21:00:00'),
+(3, 'Maandag', '09:00:00', '19:00:00'),
 (4, 'Disndag', '09:00:00', '21:00:00'),
 (5, 'Woensdag', '09:00:00', '21:00:00'),
 (6, 'Donderdag', '09:00:00', '21:00:00'),
@@ -147,9 +147,7 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`review_id`, `reviewer_name`, `rating`, `description`, `date`, `product_id`, `user_id`) VALUES
-(36, 'piet', 5, 'Perfecte apparaat', '2022-02-18', 26, 2),
-(37, 'Mark', 5, 'Perfecte apparaat', '2022-02-18', 10, 3),
-(38, 'Jan', 5, 'Goede apparaat,ik heb hem vooreen tijdje gebruikt en hij werkt goed', '2022-02-18', 60, 2);
+(39, 'bart', 5, 'Goede roeitrainer', '2022-02-24', 26, 8);
 
 -- --------------------------------------------------------
 
@@ -163,6 +161,7 @@ CREATE TABLE `user` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `gender` enum('male','female','other') NOT NULL,
+  `picture` varchar(255) NOT NULL,
   `role` enum('customer','admin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -170,10 +169,10 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `name`, `email`, `password`, `gender`, `role`) VALUES
-(1, 'Allan', 'allan@rocmondriaan.nl', 'qwerty', 'male', 'admin'),
-(2, 'Jan', 'Jan@janmail.nl', 'qwerty', 'male', 'customer'),
-(3, 'Mark', 'mark@mark.nl', 'Mark', 'male', 'customer');
+INSERT INTO `user` (`id`, `name`, `email`, `password`, `gender`, `picture`, `role`) VALUES
+(6, 'Allan', 'admin@rocmondriaan.nl', 'qwerty', 'male', 'myAvatar.png', 'admin'),
+(7, 'Jan Jan', 'Jan@janmail.nl', 'qwerty', 'male', 'myAvatar (1).png', 'customer'),
+(8, 'bart', 'allan@rocmondriaan.nl', 'qwerty', 'male', 'myPhoto.jpg', 'customer');
 
 --
 -- Indexes for dumped tables
@@ -245,19 +244,19 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `requests`
 --
 ALTER TABLE `requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `review_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
